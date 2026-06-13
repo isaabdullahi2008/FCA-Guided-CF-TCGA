@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+venv/
+env/
+ 
+# TCGA data - NEVER upload to GitHub (150-200 GB)
+data/slides/
+data/clinical/
+*.svs
+*.tif
+*.xml
