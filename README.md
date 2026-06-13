@@ -32,7 +32,7 @@ The GDC Data Transfer Tool (free) is required. Dataset size: ~150-200 GB.
 | FACE | 1.000 | 55.7 | 0.781 |
 | NICE | 1.000 | 11.87 | 0.900 |
 
-# Create the destination folders
+## Create the destination folders
 mkdir C:\TCGA_BRCA_Analysis
 mkdir C:\TCGA_BRCA_Analysis\slides
 mkdir C:\TCGA_BRCA_Analysis\clinical
