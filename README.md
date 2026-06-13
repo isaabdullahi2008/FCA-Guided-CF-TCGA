@@ -31,6 +31,40 @@ The GDC Data Transfer Tool (free) is required. Dataset size: ~150-200 GB.
 | Wachter-style | 0.983 | 61.6 | 0.892 |
 | FACE | 1.000 | 55.7 | 0.781 |
 | NICE | 1.000 | 11.87 | 0.900 |
+
+
+# TCGA-BRCA Dataset Download Instructions
+ 
+## Why the data is not in this repository
+The TCGA-BRCA dataset is 150-200 GB and cannot be stored on GitHub.
+It is freely available from the NCI GDC portal.
+ 
+## Step 1: Install the GDC Data Transfer Tool
+Download from: https://gdc.cancer.gov/access-data/gdc-data-transfer-tool
+ 
+## Step 2: Build your manifest on the GDC Portal
+1. Go to: https://portal.gdc.cancer.gov/exploration
+2. Filter: Project = TCGA-BRCA, Data Format = SVS (slides) + XML (clinical)
+3. Click 'Manifest' to download gdc_manifest.txt
+## Step 3: Download
+```bash
+gdc-client download \
+  --manifest gdc_manifest.txt \
+  --dir C:/TCGA_BRCA_Analysis/slides \
+  --n-processes 4 --retry-amount 5
+```
+ 
+## Step 4: Configure fca_cf_v5.py
+Update TCGA_SLIDE_DIR and TCGA_CLIN_DIR in fca_cf_v5.py to point
+to your download location. The code auto-detects real vs. synthetic mode.
+ 
+## Data citation
+TCGA Research Network (2012). Comprehensive molecular portraits of human
+breast tumours. Nature, 490, 61-70. https://doi.org/10.1038/nature11412
+ 
+## No account required
+TCGA-BRCA image and clinical data is open-access. No NIH login needed.
+
  
 ## Citation
 If you use this code, please cite:
