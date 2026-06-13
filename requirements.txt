@@ -12,3 +12,23 @@ data/clinical/
 *.svs
 *.tif
 *.xml
+*.bam
+*.vcf
+ 
+# Large output files
+*.pkl
+*.h5
+*.hdf5
+ 
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+ 
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+ 
+# IDE files
+.vscode/
+.idea/
+
