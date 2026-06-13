@@ -32,6 +32,42 @@ The GDC Data Transfer Tool (free) is required. Dataset size: ~150-200 GB.
 | FACE | 1.000 | 55.7 | 0.781 |
 | NICE | 1.000 | 11.87 | 0.900 |
 
+# Create the destination folders
+mkdir C:\TCGA_BRCA_Analysis
+mkdir C:\TCGA_BRCA_Analysis\slides
+mkdir C:\TCGA_BRCA_Analysis\clinical
+ 
+# Download slides (SVS images) using your manifest
+gdc-client download ^
+  --manifest C:\TCGA_BRCA\gdc_manifest.txt ^
+  --dir C:\TCGA_BRCA_Analysis\slides ^
+  --n-processes 4 ^
+  --retry-amount 5
+ 
+# Note: ^ is the Windows line-continuation character
+# Replace the path with wherever you saved gdc_manifest.txt
+
+# This command is safe to run again after interruption:
+gdc-client download ^
+  --manifest C:\TCGA_BRCA\gdc_manifest.txt ^
+  --dir C:\TCGA_BRCA_Analysis\slides ^
+  --n-processes 4 ^
+  --retry-amount 5
+
+gdc-client download ^
+  --manifest C:\TCGA_BRCA\gdc_manifest_clinical.txt ^
+  --dir C:\TCGA_BRCA_Analysis\clinical ^
+  --n-processes 4
+# In fca_cf_v5.py, find and update these two lines:
+ 
+# BEFORE (default simulation mode):
+TCGA_SLIDE_DIR  = Path("C:/TCGA_BRCA_Analysis/slides")
+TCGA_CLIN_DIR   = Path("C:/TCGA_BRCA_Analysis/clinical")
+ 
+# The paths above are already correct if you followed Step 10.
+# The code will automatically detect if the SVS files are present.
+# If they are found, it uses real data.
+# If not found, it falls back to the synthetic simulation automatically.
 
 # TCGA-BRCA Dataset Download Instructions
  
